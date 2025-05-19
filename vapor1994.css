@@ -1,0 +1,507 @@
+/*
+ *
+ * ██╗   ██╗ █████╗ ██████╗  ██████╗ ██████╗  ██╗ █████╗  █████╗ ██╗  ██╗
+ * ██║   ██║██╔══██╗██╔══██╗██╔═══██╗██╔══██╗███║██╔══██╗██╔══██╗██║  ██║
+ * ██║   ██║███████║██████╔╝██║   ██║██████╔╝╚██║╚██████║╚██████║███████║
+ * ╚██╗ ██╔╝██╔══██║██╔═══╝ ██║   ██║██╔══██╗ ██║ ╚═══██║ ╚═══██║╚════██║
+ *  ╚████╔╝ ██║  ██║██║     ╚██████╔╝██║  ██║ ██║ █████╔╝ █████╔╝     ██║
+ *   ╚═══╝  ╚═╝  ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═╝ ╚════╝  ╚════╝      ╚═╝
+ *
+ * Designed, built, and released under MIT license by @aezell. Learn more at
+ * https://gitlab.com/aezell/vapor1994.
+ *
+ * With a lot of help from @mdo's Hyde at https://github.com/poole/hyde
+ */
+
+/*
+ * Contents
+ *
+ * Global resets
+ * Sidebar
+ * Container
+ * Reverse layout
+ * Themes
+ */
+
+/*
+ * Global resets
+ *
+ * Update the foundational and global aspects of the page.
+ */
+
+html {
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 48em) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 58em) {
+  html {
+    font-size: 20px;
+  }
+}
+
+/*
+ * Sidebar
+ *
+ * Flexible banner for housing site name, intro, and "footer" content. Starts
+ * out above content in mobile and later moves to the side with wider viewports.
+ */
+
+.sidebar {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: var(--sidebar-bg-color);
+  border-right: 3px solid var(--border-color);
+}
+@media (min-width: 48em) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 18rem;
+    text-align: left;
+  }
+}
+
+/* Sidebar links */
+.sidebar-about a {
+  color: var(--title-text-color);
+}
+.sidebar-about a:hover,
+.sidebar-about a:focus {
+  text-decoration: none;
+  color: var(--title-text-hover-color);
+  background-color: var(--title-bg-hover-color);
+}
+
+/* About section */
+.sidebar-about h1 {
+  margin-top: 0;
+  font-family: "Bungee", cursive;
+  font-size: 3.5rem;
+  padding: 5px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 2px var(--border-shadow-color);
+  background-color: var(--title-bg-color);
+}
+
+.sidebar-about h1:hover,
+.sidebar-about h1:focus {
+  text-decoration: none;
+  color: var(--title-text-hover-color);
+  background-color: var(--title-bg-hover-color);
+}
+
+.lead {
+  color: white;
+  margin-top: 0;
+  font-size: 0.8rem;
+  padding: 5px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  background-color: var(--title-bg-color);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.lead a {
+  color: var(--title-text-color);
+}
+
+.lead a:hover,
+.lead a:focus {
+  text-decoration: none;
+  color: var(--title-text-hover-color);
+  background-color: var(--title-bg-hover-color);
+}
+
+/* Sidebar nav */
+.sidebar-nav {
+  margin-bottom: 1rem;
+}
+.sidebar-nav-item {
+  display: block;
+  line-height: 1.75;
+  color: var(--nav-text-color);
+  background-color: var(--nav-bg-color);
+  margin: 5px;
+  padding-left: 10px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Bungee", cursive;
+}
+a.sidebar-nav-item {
+  color: #000;
+}
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus {
+  text-decoration: none;
+  color: var(--nav-text-hover-color);
+  background-color: var(--nav-bg-hover-color);
+}
+.sidebar-nav-item.active {
+  color: var(--nav-text-hover-color);
+  background-color: var(--nav-bg-hover-color);
+  font-weight: bold;
+}
+
+/* Sticky sidebar
+ *
+ * Add the `sidebar-sticky` class to the sidebar's container to affix it the
+ * contents to the bottom of the sidebar in tablets and up.
+ */
+
+@media (min-width: 48em) {
+  .sidebar-sticky {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+  }
+}
+
+/* Container
+ *
+ * Align the contents of the site above the proper threshold with some margin-fu
+ * with a 25%-wide `.sidebar`.
+ */
+
+.content {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 48em) {
+  .content {
+    max-width: 38rem;
+    margin-left: 20rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .content {
+    margin-left: 22rem;
+    margin-right: 4rem;
+  }
+}
+
+/*
+ * Reverse layout
+ *
+ * Flip the orientation of the page by placing the `.sidebar` on the right.
+ */
+
+@media (min-width: 48em) {
+  .layout-reverse .sidebar {
+    left: auto;
+    right: 0;
+  }
+  .layout-reverse .content {
+    margin-left: 2rem;
+    margin-right: 20rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .layout-reverse .content {
+    margin-left: 4rem;
+    margin-right: 22rem;
+  }
+}
+
+#post-nav {
+  padding-top: 25px;
+}
+
+#post-nav .prev {
+  padding-right: 10px;
+}
+
+video {
+  max-width: 100%;
+}
+
+.post {
+  margin: 5 5 5 5;
+  padding: 15px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  background-color: var(--content-bg-color);
+}
+
+.post-date {
+  display: block;
+  line-height: 1.75;
+  color: var(--datetime-text-color);
+  background-color: var(--datetime-bg-color);
+  margin: 5px;
+  padding-left: 10px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Bungee", cursive;
+  font-size: 0.7rem;
+}
+a.post-date:hover,
+a.post-date:focus {
+  text-decoration: none;
+  color: var(--datetime-text-hover-color);
+  background-color: var(--datetime-bg-hover-color);
+}
+
+h1.page-title {
+  margin: 5px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Bungee", cursive;
+  padding-left: 10px;
+  color: var(--post-title-text-color);
+  background-color: var(--post-title-bg-color);
+}
+.h-feed h1.page-title:hover,
+.h-feed h1.page-title:focus {
+  color: var(--post-title-text-hover-color);
+  background-color: var(--post-title-bg-hover-color);
+}
+
+.page-title a {
+  display: block;
+  line-height: 1.25;
+  color: var(--post-title-text-color);
+  background-color: var(--post-title-bg-color);
+  font-family: "Bungee", cursive;
+  width: 100%;
+}
+.page-title a:hover,
+.page-title a:focus {
+  text-decoration: none;
+  color: var(--post-title-text-hover-color);
+  background-color: var(--post-title-bg-hover-color);
+}
+
+.e-content {
+  padding: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  color: var(--content-text-color);
+}
+
+.e-content a {
+  color: var(--link-text-color);
+  background-color: var(--link-bg-color);
+}
+.e-content a:hover,
+.e-content a:focus {
+  text-decoration: none;
+  color: var(--link-text-hover-color);
+  background-color: var(--link-bg-hover-color);
+}
+
+.page {
+  margin: 5 5 5 5;
+  padding: 15px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  background-color: var(--content-bg-color);
+}
+
+.page-content {
+  margin: 5 5 5 5;
+  padding: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+}
+
+.photos-grid-container img {
+  background-color: var(--photos-bg-color);
+  padding: 3px;
+  margin: 5px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+}
+
+.conversation-title {
+  display: block;
+  line-height: 1.75;
+  color: var(--conversation-title-text-color);
+  background-color: var(--conversation-title-bg-color);
+  margin: 5px;
+  padding: 3px 3px 3px 10px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Bungee", cursive;
+  font-size: 0.9rem;
+}
+
+.microblog_conversation {
+  padding: 3px;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  color: var(--conversation-text-color);
+  background-color: var(--conversation-bg-color);
+}
+
+.microblog_user {
+  display: block;
+  line-height: 1.75;
+  color: var(--conversation-user-text-color);
+  background-color: var(--conversation-user-bg-color);
+  margin: 5px;
+  padding: 3px 3px 3px 10px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Bungee", cursive;
+  font-size: 0.7rem;
+  height: 35px;
+}
+
+.microblog_avatar {
+  display: inline;
+  border: 2px solid var(--border-shadow-color);
+  box-shadow: 2px 2px var(--border-shadow-color);
+  border-radius: 3px;
+  vertical-align: top;
+  height: auto;
+}
+
+.microblog_fullname {
+  display: inline;
+  margin-left: 7px;
+  height: auto;
+  vertical-align: top;
+}
+
+.microblog_text {
+  padding-left: 10px;
+  font-size: 0.9rem;
+}
+
+.microblog_text a {
+  color: var(--conversation-link-text-color);
+  background-color: var(--conversation-link-bg-color);
+}
+.microblog_text a:hover,
+.microblog_text a:focus {
+  text-decoration: none;
+  color: var(--conversation-link-text-hover-color);
+  background-color: var(--conversation-link-bg-hover-color);
+}
+
+.microblog_time a {
+  color: var(--conversation-timestamp-text-color);
+  background-color: var(--conversation-timestamp-bg-color);
+  margin: 5px;
+  padding: 3px 3px 3px 10px;
+  font-size: 0.7rem;
+}
+.microblog_time a:hover,
+.microblog_time a:focus {
+  text-decoration: none;
+  color: var(--conversation-timestamp-text-hover-color);
+  background-color: var(--conversation-timestamp-bg-hover-color);
+}
+
+.bookshelf_book {
+  padding: 3px;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+  /* margin: 20px 5px 5x 15px; */
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  height: 90px;
+  color: var(--bookshelf-text-color);
+  background-color: var(--bookshelf-bg-color);
+}
+
+.bookshelf_book img {
+  margin: 5px;
+  border: 2px solid var(--bookshelf-cover-border-color);
+  box-shadow: 2px 2px var(--bookshelf-cover-border-color);
+  border-radius: 3px;
+  vertical-align: top;
+  background-color: var(--bookshelf-cover-bg-color);
+}
+
+.bookshelf_book img:hover,
+.bookshelf_book img:focus {
+  background-color: var(--bookshelf-cover-bg-color);
+  margin: 5px;
+  border: 2px solid var(--bookshelf-cover-border-hover-color);
+  box-shadow: 2px 2px var(--bookshelf-cover-border-hover-color);
+  border-radius: 3px;
+  vertical-align: top;
+}
+
+.bookshelf_title {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  font-weight: 1000;
+}
+
+.bookshelf_author {
+  margin-left: 15px;
+  font-size: 0.7rem;
+}
+
+.h-entry {
+  margin: 5 5 5 5;
+  padding: 15px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  background-color: var(--archive-bg-color);
+}
+.h-entry a {
+  color: var(--archive-timestamp-text-color);
+  background-color: var(--archive-timestamp-bg-color);
+}
+.h-entry a:hover,
+.h-entry a:focus {
+  text-decoration: none;
+  color: var(--archive-timestamp-text-hover-color);
+  background-color: var(--archive-timestamp-bg-hover-color);
+}
+
+a.reply-by-email {
+  display: block;
+  line-height: 1.75;
+  color: var(--post-title-text-color);
+  background-color: var(--post-title-bg-color);
+  margin: 5px;
+  padding: 3px 3px 3px 10px;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px var(--border-shadow-color);
+  border-radius: 3px;
+  font-family: "Bungee", cursive;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: auto;
+  width: 40%;
+}
+
+body {
+  background-color: var(--content-column-bg-color);
+}
